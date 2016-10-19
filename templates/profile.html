@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ request.user }}</h1>
+<p>
+  {% for operation in operations %}
+  {{ operation.number1 }} {{ operation.function }} {{ operation.number2 }} = {{ operation.answer }}<br>
+  {{ operation.user }}<br><br>
+  {% endfor %}
+</p>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" media="screen" title="no title">
+    <style media="screen">
+      body {
+        background-color: #000000;
+        color: #ff7800;
+      }
+    </style>
+  </head>
+  <body>
+    |<a href="{% url 'index_view' %}"><font color="#FFFFFF"> Home </font></a>|
+    {% if not request.user.is_authenticated %}
+         <a href="{% url 'login' %}"><font color="#FFFFFF"> Login </font></a>|
+         <a href="{% url 'user_create_view' %}"><font color="#FFFFFF"> Create User </font></a>|
+       {% else %}
+         <a href="{% url 'logout' %}?next={% url 'index_view' %}"><font color="#FFFFFF"> Logout </font></a>|
+         <a href="{% url 'profile_view' %}"><font color="#FFFFFF"> Your Profile </font></a>|
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
